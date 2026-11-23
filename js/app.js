@@ -408,34 +408,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Load Leaderboard
   async function loadLeaderboard() {
+    const defaultList = [
+      { rank: 1, name: "Aman S.", city: "Delhi NCR", score: 5, timeTaken: 11.4, prizeTitle: "🏆 1st Prize: Sony PS5 Pro" },
+      { rank: 2, name: "Rahul V.", city: "Mumbai", score: 5, timeTaken: 13.8, prizeTitle: "🥈 2nd Prize: Sony PS5 Slim" },
+      { rank: 3, name: "Vikramjit S.", city: "Chandigarh", score: 4, timeTaken: 9.6, prizeTitle: "🎮 3rd Prize: GTA VI Game Disc" },
+      { rank: 4, name: "Kabir M.", city: "Bengaluru", score: 4, timeTaken: 10.2, prizeTitle: "🎮 4th Prize: GTA VI Game Disc" },
+      { rank: 5, name: "Arjun R.", city: "Pune", score: 4, timeTaken: 11.0, prizeTitle: "🎮 5th Prize: GTA VI Game Disc" }
+    ];
+
     try {
       const res = await fetch('/api/leaderboard');
       if (res.ok) {
         const data = await res.json();
         renderLeaderboard(data);
+        return;
       }
     } catch (e) {
-      // Local fallback for leaderboard
-      const saved = JSON.parse(localStorage.getItem('gta6_challenge_entries') || '[]');
-      if (saved.length > 0) {
-        const localList = [
-          { rank: 1, name: "Aman S.", city: "Delhi NCR", score: 5, timeTaken: 11.4, prizeTitle: "Sony PS5 Pro Locked" },
-          { rank: 2, name: "Rahul V.", city: "Mumbai", score: 5, timeTaken: 13.8, prizeTitle: "Sony PS5 Slim Locked" },
-          { rank: 3, name: "Vikramjit S.", city: "Chandigarh", score: 4, timeTaken: 9.6, prizeTitle: "GTA VI Game Disc" }
-        ];
-        saved.forEach(s => {
-          localList.push({
-            rank: localList.length + 1,
-            name: s.name,
-            city: s.city,
-            score: s.score,
-            timeTaken: s.timeTaken,
-            prizeTitle: "Contest Participant"
-          });
-        });
-        renderLeaderboard(localList);
-      }
+      // offline/static mode
     }
+
+    // Merge with user entries in localStorage
+    const saved = JSON.parse(localStorage.getItem('gta6_challenge_entries') || '[]');
+    const list = [...defaultList];
+    saved.forEach(s => {
+      list.push({
+        rank: list.length + 1,
+        name: s.name,
+        city: s.city,
+        score: s.score,
+        timeTaken: s.timeTaken,
+        prizeTitle: "Contest Participant"
+      });
+    });
+    renderLeaderboard(list);
   }
 
   function renderLeaderboard(list) {
