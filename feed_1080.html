@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feed Post 1080x1080</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700;800;900&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+      background: #090314;
+      font-family: 'Outfit', sans-serif;
+      color: #fff;
+      position: relative;
+    }
+    .bg-img {
+      position: absolute;
+      top: 0; left: 0; width: 1080px; height: 1080px;
+      object-fit: cover;
+      opacity: 0.38;
+      mix-blend-mode: luminosity;
+    }
+    .gradient-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 1080px; height: 1080px;
+      background: radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.45) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(0, 240, 255, 0.35) 0%, transparent 50%),
+                  linear-gradient(to bottom, rgba(9, 3, 20, 0.4) 0%, rgba(9, 3, 20, 0.95) 85%);
+    }
+    .grid-lines {
+      position: absolute;
+      bottom: 0; left: 0; width: 100%; height: 350px;
+      background: linear-gradient(rgba(0, 240, 255, 0.15) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(0, 240, 255, 0.15) 1px, transparent 1px);
+      background-size: 50px 50px;
+      transform: perspective(400px) rotateX(60deg);
+      transform-origin: bottom center;
+      opacity: 0.7;
+    }
+    .container {
+      position: relative;
+      z-index: 2;
+      width: 1080px;
+      height: 1080px;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .badge-arena {
+      background: #ff007f;
+      color: #fff;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      padding: 12px 28px;
+      border-radius: 40px;
+      box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
+      text-transform: uppercase;
+    }
+    .badge-verified {
+      background: rgba(0, 240, 255, 0.12);
+      border: 2px solid #00f0ff;
+      color: #00f0ff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      padding: 10px 24px;
+      border-radius: 40px;
+      letter-spacing: 1px;
+    }
+    .title-block {
+      margin-top: 15px;
+    }
+    .sub-head {
+      color: #ffd700;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    .headline {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 70px;
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .neon-pink {
+      color: #ff007f;
+      text-shadow: 0 0 35px rgba(255, 0, 127, 0.9);
+    }
+    .neon-cyan {
+      color: #00f0ff;
+      text-shadow: 0 0 35px rgba(0, 240, 255, 0.9);
+    }
+    .ps5-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 380px;
+    }
+    .ps5-wrapper img {
+      max-height: 370px;
+      filter: drop-shadow(0 20px 45px rgba(0, 240, 255, 0.6)) drop-shadow(0 -10px 30px rgba(255, 0, 127, 0.5));
+    }
+    .prizes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 20px 26px;
+      backdrop-filter: blur(10px);
+    }
+    .prize-item {
+      font-size: 21px;
+      font-weight: 700;
+      color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .prize-item strong {
+      color: #ffd700;
+    }
+    .footer-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, rgba(255, 0, 127, 0.25), rgba(0, 240, 255, 0.25));
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      padding: 18px 30px;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+    .footer-price {
+      display: flex;
+      flex-direction: column;
+    }
+    .fp-label {
+      font-size: 16px;
+      color: #aaa;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .fp-val {
+      font-size: 40px;
+      font-weight: 900;
+      color: #ffd700;
+      font-family: 'Chakra Petch', sans-serif;
+      line-height: 1;
+    }
+    .cta-btn {
+      background: linear-gradient(135deg, #00f0ff, #0077ff);
+      color: #000;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      padding: 18px 40px;
+      border-radius: 40px;
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.7);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <img src="images/gaming_setup_neon.jpg" class="bg-img" alt="Background">
+  <div class="gradient-overlay"></div>
+  <div class="grid-lines"></div>
+
+  <div class="container">
+    <div class="top-header">
+      <div class="badge-arena">🌴 VICE CITY ARENA</div>
+      <div class="badge-verified">🛡️ 100% LEGAL SKILL CONTEST</div>
+    </div>
+
+    <div class="title-block">
+      <div class="sub-head">5 TIMED GTA QUESTIONS • 60 SECONDS ARENA</div>
+      <h1 class="headline">WIN SONY <span class="neon-pink">PS5 SLIM</span> & <span class="neon-cyan">GTA VI</span>!</h1>
+    </div>
+
+    <div class="ps5-wrapper">
+      <img src="images/ps5_main.png" alt="PlayStation 5 Slim">
+    </div>
+
+    <div class="prizes-grid">
+      <div class="prize-item">🥇 <span>Rank #1: <strong>Sony PS5 Slim Disc Edition</strong></span></div>
+      <div class="prize-item">💿 <span>Ranks 2-10: <strong>GTA VI Day-1 Launch Discs</strong></span></div>
+      <div class="prize-item">⚡ <span>Format: <strong>Timed GTA Speed Trivia</strong></span></div>
+      <div class="prize-item">📦 <span>Delivery: <strong>Free Insured Express Courier</strong></span></div>
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-price">
+        <span class="fp-label">CHALLENGE ENTRY PASS</span>
+        <span class="fp-val">₹199 ONLY</span>
+      </div>
+      <div class="cta-btn">LINK IN BIO TO ENTER ➔</div>
+    </div>
+  </div>
+</body>
+</html>

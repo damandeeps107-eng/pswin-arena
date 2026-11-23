@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Story Post 1080x1920</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700;800;900&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #090314;
+      font-family: 'Outfit', sans-serif;
+      color: #fff;
+      position: relative;
+    }
+    .bg-img {
+      position: absolute;
+      top: 0; left: 0; width: 1080px; height: 1920px;
+      object-fit: cover;
+      opacity: 0.35;
+      mix-blend-mode: luminosity;
+    }
+    .gradient-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 1080px; height: 1920px;
+      background: radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.5) 0%, transparent 60%),
+                  radial-gradient(circle at 20% 80%, rgba(0, 240, 255, 0.4) 0%, transparent 60%),
+                  linear-gradient(to bottom, rgba(9, 3, 20, 0.5) 0%, rgba(9, 3, 20, 0.96) 80%);
+    }
+    .grid-lines {
+      position: absolute;
+      bottom: 0; left: 0; width: 100%; height: 500px;
+      background: linear-gradient(rgba(0, 240, 255, 0.2) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(0, 240, 255, 0.2) 1px, transparent 1px);
+      background-size: 60px 60px;
+      transform: perspective(500px) rotateX(60deg);
+      transform-origin: bottom center;
+      opacity: 0.8;
+    }
+    .container {
+      position: relative;
+      z-index: 2;
+      width: 1080px;
+      height: 1920px;
+      padding: 100px 70px 80px 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+    }
+    .badge-bar {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+    .badge-arena {
+      background: #ff007f;
+      color: #fff;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      padding: 14px 34px;
+      border-radius: 40px;
+      box-shadow: 0 0 30px rgba(255, 0, 127, 0.8);
+      text-transform: uppercase;
+    }
+    .badge-slots {
+      background: rgba(0, 240, 255, 0.15);
+      border: 2px solid #00f0ff;
+      color: #00f0ff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      padding: 12px 28px;
+      border-radius: 40px;
+    }
+    .title-block {
+      margin-top: 30px;
+    }
+    .sub-head {
+      color: #ffd700;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .headline {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 76px;
+      font-weight: 900;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+    .neon-pink {
+      color: #ff007f;
+      text-shadow: 0 0 40px rgba(255, 0, 127, 0.9);
+    }
+    .neon-cyan {
+      color: #00f0ff;
+      text-shadow: 0 0 40px rgba(0, 240, 255, 0.9);
+    }
+    .ps5-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 30px 0;
+    }
+    .ps5-wrapper img {
+      max-height: 520px;
+      filter: drop-shadow(0 25px 50px rgba(0, 240, 255, 0.6)) drop-shadow(0 -15px 35px rgba(255, 0, 127, 0.5));
+    }
+    .info-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid rgba(255, 0, 127, 0.4);
+      border-radius: 24px;
+      padding: 30px 40px;
+      width: 100%;
+      margin-bottom: 25px;
+    }
+    .info-card p {
+      font-size: 26px;
+      font-weight: 700;
+      color: #eee;
+      line-height: 1.5;
+    }
+    .sticker-placeholder {
+      width: 100%;
+      border: 3px dashed #00f0ff;
+      background: rgba(0, 240, 255, 0.12);
+      border-radius: 30px;
+      padding: 35px 20px;
+      margin-bottom: 30px;
+    }
+    .sticker-placeholder .sp-title {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 32px;
+      color: #00f0ff;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .sticker-placeholder .sp-sub {
+      font-size: 20px;
+      color: #bbb;
+      margin-top: 6px;
+    }
+    .footer-action {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, rgba(255, 0, 127, 0.3), rgba(0, 240, 255, 0.3));
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      padding: 24px 40px;
+      border-radius: 30px;
+    }
+    .fa-fee {
+      text-align: left;
+    }
+    .fa-fee-label {
+      font-size: 18px;
+      color: #aaa;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .fa-fee-val {
+      font-size: 48px;
+      font-weight: 900;
+      color: #ffd700;
+      font-family: 'Chakra Petch', sans-serif;
+      line-height: 1;
+    }
+    .fa-btn {
+      background: linear-gradient(135deg, #00f0ff, #0077ff);
+      color: #000;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      padding: 20px 45px;
+      border-radius: 40px;
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.8);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <img src="images/vice_city_neon_palms.jpg" class="bg-img" alt="Background">
+  <div class="gradient-overlay"></div>
+  <div class="grid-lines"></div>
+
+  <div class="container">
+    <div class="badge-bar">
+      <div class="badge-arena">🌴 VICE CITY ARENA</div>
+      <div class="badge-slots">⚡ LIMITED 500 SLOTS</div>
+    </div>
+
+    <div class="title-block">
+      <div class="sub-head">KYA AAPKO GTA KE SARE CHEATS & LORE PATA HAI?</div>
+      <h1 class="headline">WIN A SONY <span class="neon-pink">PS5 SLIM</span> FOR <span class="neon-cyan">₹199</span>!</h1>
+    </div>
+
+    <div class="ps5-wrapper">
+      <img src="images/ps5_main.png" alt="PS5 Slim">
+    </div>
+
+    <div class="info-card">
+      <p>Answer 5 Fast GTA Trivia Questions in 60s.<br>
+      <span style="color:#ffd700;">Fastest Top Ranker on Leaderboard Wins the PS5 Slim!</span></p>
+    </div>
+
+    <div class="sticker-placeholder">
+      <div class="sp-title">🔗 [ ADD LINK STICKER HERE ]</div>
+      <div class="sp-sub">Instagram par Story daalte waqt yahan "Link Sticker" lagana!</div>
+    </div>
+
+    <div class="footer-action">
+      <div class="fa-fee">
+        <div class="fa-fee-label">ARENA PASS</div>
+        <div class="fa-fee-val">₹199</div>
+      </div>
+      <div class="fa-btn">TAP BIO LINK ➔</div>
+    </div>
+  </div>
+</body>
+</html>
